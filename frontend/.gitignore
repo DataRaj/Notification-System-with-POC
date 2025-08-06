@@ -1,0 +1,64 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# documents
+INTERVIEW.md*
+
+# backend folder (moved to separate repository)
+backend/
+
+# all markdown documentation files
+*.md
+!README.md
+
+# deployment scripts and configuration files
+deploy-*.bat
+deploy-*.sh
+deploy.bat
+deploy.sh
+docker-compose*.yml
+Dockerfile.*
+nginx.conf
+railway.toml
+
+# environment files (keep examples)
+.env.production

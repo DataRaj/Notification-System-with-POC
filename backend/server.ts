@@ -7,6 +7,8 @@ import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
 import Redis from 'ioredis';
 
+
+
 // Import services and routes
 import { NotificationService } from './services/notification-bull';
 import { EventService } from './services/event.service.js';
@@ -20,11 +22,13 @@ dotenv.config();
 const app = express();
 const server = createServer(app);
 const prisma = new PrismaClient();
-const redis = new Redis(process.env.REDIS_URL || 'redis://localhost:6379');
+const redis = new Redis(process.env.REDIS_URL || 'redis://localhost:6379', {
+  maxRetriesPerRequest: null, // 🛑 Required for BullMQ
+});
 
 // CORS configuration
 const corsOrigins = process.env.NODE_ENV === 'production' 
-  ? [process.env.FRONTEND_URL || 'https://insyd-assesment.vercel.app'] 
+  ? [process.env.FRONTEND_URL] 
   : ['http://localhost:3000'];
 
 const io = new Server(server, {
